@@ -1,0 +1,131 @@
+import sys
+from PyQt5.QtCore import Qt, QDate, QTime
+from  PyQt5.QtWidgets import *
+
+def lay():
+    app = QApplication(sys.argv)
+    window = QWidget()
+    gridlay = QGridLayout()
+
+    c = QHBoxLayout()
+    combo = QComboBox()
+
+    b = QLabel("style")
+    combo.addItem("Fusion")
+
+    cb1 = QCheckBox("Use style's standart pallete")
+    cb2 = QCheckBox("Disable Widgets")
+
+    c.addWidget(b)
+    c.addWidget(combo)
+
+    gridlay.addLayout(c,1,1)
+    
+    gridlay.addWidget(cb1,1,2,1,2)
+    gridlay.addWidget(cb2,1,4)
+    bagan1 = QLabel("Group 1")
+    bagan2 = QLabel("Group 2")
+    bagan3 = QLabel("Group 3")
+
+    gridlay.addWidget(bagan1,2,1)
+    gridlay.addWidget(bagan2,2,3)
+    gridlay.addWidget(bagan3,9,3)
+
+    #====== bagan 1 ======#
+    bagan1 = QGroupBox()
+    gridlay.addWidget(bagan1,4,1,5,2)
+    vbox = QVBoxLayout()
+    bagan1.setLayout(vbox)
+
+    Button1 = QRadioButton("Radio Button 1")
+    Button2 = QRadioButton("Radio Button 2")
+    Button3 = QRadioButton("Radio Button 3")
+    sCBox = QCheckBox("Tri-State Check Box")
+    sCBox.setTristate(True)
+    sCBox.setCheckState(1)
+
+    vbox.addWidget(Button1)
+    vbox.addWidget(Button2)
+    vbox.addWidget(Button3)
+    vbox.addWidget(sCBox)
+
+    #====== bagan 2 ======#
+    bagan2 = QGroupBox()
+    gridlay.addWidget(bagan2,4,3,5,2)
+    vbox2 = QVBoxLayout()
+    bagan2.setLayout(vbox2)
+
+    button1 = QPushButton("Default Push Button")
+    button1.setDefault(True)
+    button2 = QPushButton("Toggle Push Button")
+    button3 = QPushButton("Flat Push Button")
+    button3.setFlat(True)
+
+    vbox2.addWidget(button1)
+    vbox2.addWidget(button2)
+    vbox2.addWidget(button3)
+
+    #====== bagan 3 ======#
+    bagan3 = QGroupBox()
+    gridlay.addWidget(bagan3,10,3,5,2)
+    vbox3 = QVBoxLayout()
+    bagan3.setLayout(vbox3)
+
+    lineEdit = QLineEdit("1234567890")
+    lineEdit.setEchoMode(QLineEdit.Password)
+
+    sBox = QSpinBox()
+    sBox.setValue(50)
+
+    time = QDateTimeEdit()
+    time.setDate(QDate(2018,9,24))
+    time.setTime(QTime(1,56,0,0))
+    time.setDisplayFormat(("dd.MM.yyHH:mm"))
+
+    slider = QSlider()
+    slider.setValue(35)
+    slider.setOrientation(Qt.Horizontal)
+
+    dial = QDial()
+    dial.setValue(35)
+    scroll =QScrollBar()
+    scroll.setValue(60)
+
+    scroll.setOrientation(Qt.Horizontal)
+
+    gridlay.addWidget(lineEdit,12,3,1,2)
+    gridlay.addWidget(sBox,13,3,1,2)
+    gridlay.addWidget(time,14,3,1,2)
+    gridlay.addWidget(slider,15,3,1,1)
+    gridlay.addWidget(dial,15,4,2,1)
+    gridlay.addWidget(scroll,16,3,1,1)
+
+    bar = QProgressBar()
+    bar.setValue(22)
+    gridlay.addWidget(bar,18,1,2,4)
+
+    ##===========================##
+    tab = QTabWidget()
+    table = QTableWidget()
+    table.setRowCount(10)
+    table.setColumnCount(10)
+    tab.addTab(table,"")
+    tab.setTabText(0,"Table")
+    textEdit = QTextEdit()
+    tab.addTab(textEdit,"")
+    tab.setTabText(1,"Text Edit")
+
+    gridlay.addWidget(tab,10,1,8,2)
+
+    window.setLayout(gridlay)
+    window.setWindowTitle("PYQT5 Layout")
+    window.show()
+    sys.exit(app.exec_())
+
+
+
+if __name__ == '__main__':
+    lay()
+
+
+   
